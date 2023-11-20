@@ -1,1 +1,1 @@
-<?php phpinfo(INFO_GENERAL);
+<?php phpinfo();
