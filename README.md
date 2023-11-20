@@ -13,7 +13,7 @@ Aprenda a usar esse micro framework que ajuda você a escrever aplicações web 
 * [x] 05 - Criando o Projeto
 * [x] 06 - Métodos HTTP - Parte 1
 * [x] 07 - Métodos HTTP - Parte 2
-* [x] 08 - Rotas
+* [ ] 08 - Rotas
 * [ ] 09 - Cache
 * [ ] 10 - Request e Response na Prática
 * [ ] 11 - Controllers
