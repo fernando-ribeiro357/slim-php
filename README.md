@@ -22,7 +22,7 @@ Aprenda a usar esse micro framework que ajuda você a escrever aplicações web 
 * [ ] 14 - CORS
 * [ ] 15 - Injeção e Inversão de Dependências
 * [ ] 16 - Contêiner de Dependências
-* [ ] 17 - Response - HTML
+* [x] 17 - Response - HTML
 * [ ] 18 - Response - HTML + Twig
 * [ ] 19 - Response - JSON
 * [ ] 20 - Web Servers
