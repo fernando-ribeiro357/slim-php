@@ -1,11 +1,11 @@
 {
     "require": {
         "slim/slim": "4.*",
-        "slim/psr7": "^1.6",
-        "nyholm/psr7": "^1.8",
-        "nyholm/psr7-server": "^1.1",
-        "guzzlehttp/psr7": "^2.6",
-        "http-interop/http-factory-guzzle": "^1.2",
-        "laminas/laminas-diactoros": "^3.3"
+        "slim/psr7": "^1.3",
+        "nyholm/psr7": "^1.4",
+        "nyholm/psr7-server": "^1.0",
+        "guzzlehttp/psr7": "^1.8",
+        "http-interop/http-factory-guzzle": "^1.0",
+        "laminas/laminas-diactoros": "^2.5"
     }
 }
