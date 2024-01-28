@@ -16,7 +16,7 @@ Aprenda a usar esse micro framework que ajuda você a escrever aplicações web 
 * [x] 08 - Rotas
 * [ ] 09 - Cache
 * [x] 10 - Request e Response na Prática
-* [ ] 11 - Controllers
+* [x] 11 - Controllers
 * [ ] 12 - Custom Error Handling
 * [ ] 13 - Middlewares
 * [ ] 14 - CORS
