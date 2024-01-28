@@ -6,8 +6,8 @@ services:
       dockerfile: php.Dockerfile
     ports:
       - '8080:80'
-    # volumes:
-    #   - './src:/var/www/html'
+    volumes:
+      - './src:/var/www/html'
   # postgres:
   #   build:
   #     context: _docker

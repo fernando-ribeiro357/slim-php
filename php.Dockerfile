@@ -66,11 +66,11 @@ ENV HTDOCS /var/www/html
 
 # Cópia inicial para o HTDOCS
 WORKDIR $HTDOCS
-COPY src/* $HTDOCS/
+#COPY src/* $HTDOCS/
 
 # Allow
 # VOLUME $HTDOCS
-RUN chown -R $APACHE_RUN_USER $HTDOCS && chmod -R g+rw $HTDOCS
+#RUN chown -R $APACHE_RUN_USER $HTDOCS && chmod -R g+rw $HTDOCS
 
 # Configuracao do Apache e PHP
 COPY webserver/odbcinst.ini /etc/odbcinst.ini
@@ -89,9 +89,11 @@ RUN echo "\nexport PATH=\"vendor/bin:\$PATH\"" >> ~/.bashrc
 #    php composer-setup.php --quiet && \
 #    rm composer-setup.php
 # RUN php -r "copy('https://https://getcomposer.org/download/latest-stable/composer.phar', 'composer.phar');" && \
-RUN curl -o composer.phar https://getcomposer.org/download/latest-stable/composer.phar      && \
-    chmod +x composer.phar                                                                  && \
-    COMPOSER_ALLOW_SUPERUSER=1 ./composer.phar install
+# RUN curl -o composer.phar https://getcomposer.org/download/latest-stable/composer.phar      && \
+    # chmod +x composer.phar                                                                  && \
+RUN curl -o composer.phar https://getcomposer.org/download/latest-stable/composer.phar
+RUN chmod +x composer.phar
+#RUN COMPOSER_ALLOW_SUPERUSER=1 ./composer.phar install
 
 # Expose apache.
 EXPOSE 80

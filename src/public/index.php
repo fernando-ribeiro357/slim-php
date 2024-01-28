@@ -20,4 +20,6 @@ $app->setBasePath('');
 
 $app->get('/', ProductsController::class . ':get');
 
+$app->post('/post', ProductsController::class . ':post');
+
 $app->run();
