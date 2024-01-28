@@ -62,14 +62,14 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 ENV HTDOCS /var/www/html
 
 # Limpeza da pasta
-#RUN rm -R $HTDOCS
+RUN rm -R $HTDOCS
 
 # Cópia inicial para o HTDOCS
 WORKDIR $HTDOCS
-#COPY src/* $HTDOCS/
+COPY --chown=$APACHE_RUN_USER:$APACHE_RUN_GROUP src/ $HTDOCS/
 
 # Allow
-# VOLUME $HTDOCS
+VOLUME $HTDOCS
 #RUN chown -R $APACHE_RUN_USER $HTDOCS && chmod -R g+rw $HTDOCS
 
 # Configuracao do Apache e PHP
@@ -79,8 +79,6 @@ COPY webserver/apache-ssl-config.conf /etc/apache2/sites-enabled/default-ssl.con
 COPY webserver/apache2.conf /etc/apache2/apache2.conf
 COPY webserver/mycert.crt /etc/ssl/certs/mycert.crt
 COPY webserver/mycert.key /etc/ssl/private/mycert.key
-
-# Atenção: será usado o arquivo ".user.ini" para override do php.ini no ambiente da DGTI. Recomendável customizar lá
 COPY webserver/php.ini /usr/local/etc/php/php.ini
 
 # COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -91,9 +89,14 @@ RUN echo "\nexport PATH=\"vendor/bin:\$PATH\"" >> ~/.bashrc
 # RUN php -r "copy('https://https://getcomposer.org/download/latest-stable/composer.phar', 'composer.phar');" && \
 # RUN curl -o composer.phar https://getcomposer.org/download/latest-stable/composer.phar      && \
     # chmod +x composer.phar                                                                  && \
-RUN curl -o composer.phar https://getcomposer.org/download/latest-stable/composer.phar
-RUN chmod +x composer.phar
-#RUN COMPOSER_ALLOW_SUPERUSER=1 ./composer.phar install
+# RUN curl -o composer.phar https://getcomposer.org/download/latest-stable/composer.phar
+# RUN chmod +x composer.phar
+# RUN COMPOSER_ALLOW_SUPERUSER=1 ./composer.phar install
+COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+#COPY src/composer.json src/composer.lock ./
+ENV COMPOSER_ALLOW_SUPERUSER 1
+RUN composer install 
+RUN chown -R $APACHE_RUN_USER:$APACHE_RUN_GROUP $HTDOCS && chmod -R g+rw $HTDOCS
 
 # Expose apache.
 EXPOSE 80
